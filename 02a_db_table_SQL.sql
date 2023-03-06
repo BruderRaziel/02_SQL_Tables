@@ -7,7 +7,7 @@
 /* Datenbanken auf Server anzeigen */
 SHOW DATABASES;
 
-/* DB löschen, falls vorhanden*/
+/* DB loeschen, falls vorhanden*/
 DROP DATABASE IF EXISTS boo;
 /* DB anlegen falls nicht vorhanden */
 CREATE DATABASE IF NOT EXISTS boo;
@@ -15,6 +15,8 @@ CREATE DATABASE IF NOT EXISTS boo;
 SHOW DATABASES;
 
 USE boo;
+
+/* Alle Tabellen in der DB anzeigen*/
 
 SHOW TABLES;
 
@@ -29,10 +31,31 @@ CREATE TABLE IF NOT EXISTS coworkers
 
 SHOW TABLES;
 
+/* Struktur der Tabelle anzeigen */
 DESCRIBE coworkers;
 
-INSERT INTO coworkers(firstName,location,age,computer) VALUES ("Max","office",35,"PC");
-INSERT INTO coworkers(firstName,location,age,computer) VALUES ("Gani","pool",36,"iPad");
-INSERT INTO coworkers(firstName,location,age,computer) VALUES ("Sohrab","bed",26,"Mac");
+INSERT INTO coworkers(firstName,location,age,computer) VALUES 
+                        ("Max","office",35,"PC");
+INSERT INTO coworkers(firstName,location,age,computer) VALUES 
+                        ("Gani","pool",36,"iPad");
+INSERT INTO coworkers(firstName,location,age,computer) VALUES 
+                        ("Sohrab","bed",26,"Mac");
 
-SELECT * FROM coworkers;
+/* Inhalte der Tabelle anzeigen */
+# SELECT * FROM coworkers;
+
+/* --- Inhalte Filtern --- */
+# SELECT * FROM coworkers WHERE location = "pool";
+
+/* --- Inhalte sortieren --- */
+
+SELECT 
+    firstName AS "Name",
+    location AS "Ort",
+    age AS "Alter"
+FROM coworkers
+# WHERE age > 35 AND location = "bed"
+# ORDER BY age ASC
+ORDER BY age DESC
+LIMIT 1
+;    
